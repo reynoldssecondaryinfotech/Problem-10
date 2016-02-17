@@ -1,0 +1,25 @@
+# Problem 10-1
+
+natalie_number = int(input("Enter the total number: "))
+valid_number = True
+correct_configuration = 1
+
+# Set up the beginning number of fingers on each hand
+if natalie_number  <= 5:
+    first_hand = natalie_number
+    second_hand = 0
+elif natalie_number <= 10:
+    first_hand = 5
+    second_hand = natalie_number - 5
+else:
+    valid_number = False
+
+# Use a while loop to try out more configurations
+if valid_number:
+    while first_hand > second_hand:
+        correct_configuration = correct_configuration + 1
+        first_hand = first_hand - 1
+        second_hand = second_hand + 1
+    print("The total number of correct configurations is " + str(correct_configuration))
+else:
+    print("Invalid number.")
