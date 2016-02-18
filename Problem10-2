@@ -1,0 +1,40 @@
+# Problem 10-2
+
+a = int(input("Enter Nikky forward: "))
+b = int(input("Enter Nikky backward: "))
+c = int(input("Enter Byron forward: "))
+d = int(input("Enter Byron backward: "))
+
+s = input("Enter the total number of steps: ")
+
+# Calculate actual distance travelled by Nikki
+
+number_cycles = s // (a + b)
+Nikki_distance = number_cycles * (a - b)
+Nikki_steps = number_cycles * (a + b)
+
+if Nikki_steps < s:
+    steps_left = s - Nikki_steps
+    if steps_left <= a:
+        Nikki_distance = Nikki_distance + c
+    else:
+        Nikki_distance = Nikki_distance + c
+        steps_left = steps_left - c
+        Nikki_distance = Nikki_distance - steps_left
+
+# Calculate actual distance travelled by Byron
+
+number_cycles = s // (c + d)
+Byron_distance = number_cycles * (c - d)
+Byron_steps = number_cycles * (c + d)
+
+if Byron_steps < s:
+    steps_left = s - Byron_steps
+    if steps_left <= c:
+        Byron_distance = Byron_distance + a
+    else:
+        Byron_distance = Byron_distance + a
+        steps_left = steps_left - a
+        Byron_distance = Byron_distance - steps_left
+
+print("Nikki" , Nikki_distance, "Byron " , Byron_distance)
